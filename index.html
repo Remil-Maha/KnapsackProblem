@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimisez votre chariot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>OPTIMISEZ VOTRE CHARIOT!</h1>
+    <div class="main-content">
+      <div class="content-left">
+        <div class="description">
+          Vous venez de gagner une carte cadeau, mais elle a une limite de poids
+          pour votre chariot. Nous allons vous aider à sélectionner les articles
+          que vous voulez emporter afin de maximiser leur valeur totale tout en
+          respectant la capacité de votre chariot!
+        </div>
+
+        <div class="capacity-container">
+          <label class="capacity-label" for="capacity">
+            Capacité de chariot en kg :
+          </label>
+          <input
+            type="number"
+            id="capacity"
+            name="capacity"
+            min="0"
+            step="1"
+            aria-required="true"
+            placeholder=""
+          />
+        </div>
+
+        <h3>Ajouter un article:</h3>
+        <div class="form-group container">
+          <div class="input-group">
+            <input
+              type="text"
+              id="itemName"
+              placeholder="Nom"
+              aria-label="Nom de l'article"
+              aria-required="true"
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="number"
+              id="itemWeight"
+              placeholder="Poids (kg)"
+              min="0"
+              step="0.1"
+              aria-label="Poids de l'article"
+              aria-required="true"
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="number"
+              id="itemPrice"
+              placeholder="Prix"
+              min="0"
+              step="0.1"
+              aria-label="Prix de l'article"
+              aria-required="true"
+            />
+          </div>
+          <button
+            type="button"
+            onclick="addItem()"
+            aria-label="Ajouter l'article"
+          >
+            Ajouter
+          </button>
+        </div>
+        <div
+          id="errorMessage"
+          role="alert"
+          aria-live="polite"
+          class="error-message"
+        ></div>
+
+        <div
+          id="errorMessage"
+          role="alert"
+          aria-live="polite"
+          class="error-message"
+        ></div>
+      </div>
+
+      <div class="content-right">
+        <div class="illustration">
+          <img
+            src="illustration.svg"
+            alt="Illustration d'un chariot de courses"
+          />
+        </div>
+      </div>
+    </div>
+
+    <h3 class="table-title">Articles Disponibles:</h3>
+    <div class="table-container">
+      <table role="grid" aria-label="Liste des articles">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Poids</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="itemsTable"></tbody>
+      </table>
+    </div>
+
+    <div class="button-container">
+      <button
+        id="optimizeBtn"
+        onclick="optimize()"
+        aria-label="Vérifier l'optimisation"
+      >
+        Vérifier
+      </button>
+    </div>
+
+    <div
+      id="resultModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()" aria-label="Fermer"
+          >&times;</span
+        >
+        <h3 id="modalTitle">Résultat de l'optimisation</h3>
+        <div id="resultContent" role="region" aria-live="polite"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
